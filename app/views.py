@@ -24,6 +24,7 @@ def store(request):
         user = User.objects.create_user(request.POST['user'], request.POST['email'], request.POST['password'])
         user.first_name = request.POST['name']
         user.save()
+        user.user_permissions.add(28)
         data['msg'] = 'Usuário cadastrado com sucesso!'
         data['class'] = 'alert-success'
     return render(request,'create.html',data)
